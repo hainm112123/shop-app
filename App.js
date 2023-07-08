@@ -1,11 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import CategoryListItem from './components/CategoryListItem';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+
+import CategoryList from './components/CategoryList';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <CategoryListItem />
+    <View>
+      <CategoryList />
     </View>
   );
 }

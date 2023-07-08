@@ -1,13 +1,11 @@
 import React from "react";
 import { View, Text, Image, StyleSheet } from 'react-native'
 
-import GamingImage from '../assets/CategoryListItem/console.png'
-
-export default function CategoryListItem () {
+export default function CategoryListItem ({ category }) {
   return (
     <View style={styles.container}>
-        <Text style={styles.title}>Gaming</Text>
-        <Image style={styles.img} source={GamingImage} />
+        <Text style={styles.title}>{category.title}</Text>
+        <Image style={styles.img} source={category.img} />
     </View>
   )
 } 
@@ -20,7 +18,7 @@ const styles = StyleSheet.create({
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 10,
-    elevation: 10,
+    elevation: 8,
     shadowOffset: {width: 0, height: 0},
     marginBottom: 16,
   },
