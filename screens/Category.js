@@ -1,25 +1,20 @@
 import { View, Text, StyleSheet } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 import ProductListItem from "../components/ProductListItem";
-import ori_1_img from '../assets/Products/Gaming/ori_1.jpg'
-import ori_2_img from '../assets/Products/Gaming/ori_2.jpg'
 
 export default function Category({ route }) {
-  const { title } = route.params;
+  const [products, setProducts] = useState([]);
 
-  const products = [
-    {
-      img: ori_1_img,
-      name: 'Ori and the blind forest ',
-      price: '600k',
-    },
-    {
-      img: ori_2_img,
-      name: 'Ori and the will of the wips ',
-      price: '600k',
-    },
-  ]  
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await axios.get(`http://192.168.0.103:3000/products?category=${route.params.id}`);
+      setProducts(res.data);
+    }
+    fetchProducts();
+  }, [])
 
   return (
     <FlatList 

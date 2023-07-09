@@ -1,0 +1,45 @@
+{
+  "categories": [
+    {"id": 0, "title": "Gaming"},
+    {"id": 1, "title": "Movie"},
+    {"id": 2, "title": "Coding"}
+  ],
+  "products": [
+    {
+      "name": "Ori and the blind forest",
+      "price": "600k",
+      "img": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b2/Ori_and_the_Blind_Forest_Logo.jpg/220px-Ori_and_the_Blind_Forest_Logo.jpg",
+      "category": 0
+    },
+    {
+      "name": "Ori and the will of the wips",
+      "price": "600k",
+      "img": "https://upload.wikimedia.org/wikipedia/en/9/94/Ori_and_the_Will_of_the_Wisps.jpg",
+      "category": 0
+    },
+    {
+      "name": "Majo no tabitabi",
+      "price": "600k",
+      "img": "https://static.wikia.nocookie.net/majo-no-tabitabi/images/1/17/LN_10-C.jpg/revision/latest?cb=20200619131352&path-prefix=vi",
+      "category": 1
+    },
+    {
+      "name": "Yuru camp",
+      "price": "600k",
+      "img": "https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/5ee48931dab2ab539b5f7b721f9559c3.jpe",
+      "category": 1
+    },
+    {
+      "name": "Codeblock",
+      "price": "600k",
+      "img": "https://wiki.codeblocks.org/images/c/c7/Cb_splash.png",
+      "category": 2
+    },
+    {
+      "name": "Visual Studio Code",
+      "price": "600k",
+      "img": "https://code.visualstudio.com/favicon.ico",
+      "category": 2
+    }
+  ]
+}

@@ -1,9 +1,11 @@
 import { View, Image, Text, StyleSheet, ImageBackground, Alert, TouchableOpacity} from "react-native";
 
 export default function ProductListItem({ product, onAddToCartClick }) {
+  console.log(product);
+
   return (
       <View style={styles.cotainer}> 
-        <ImageBackground style={styles.img} source={product.img} resizeMode="contain"/>
+        <ImageBackground style={styles.img} source={{uri: product.img}} resizeMode="contain"/>
         <View style={styles.info}>
           <Text numberOfLines={1} style={styles.name} >{product.name}</Text>
           <View style={styles.priceRow}> 
