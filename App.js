@@ -1,12 +1,14 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 
-import CategoryList from './components/CategoryList';
+import AppNavigator from './AppNavigator'
 
 export default function App() {
   return (
-    <View>
-      <CategoryList />
-    </View>
+    <NavigationContainer>
+      <AppNavigator />
+    </NavigationContainer>
   );
 }
 

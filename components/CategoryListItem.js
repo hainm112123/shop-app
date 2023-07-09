@@ -1,12 +1,16 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, TouchableOpacity, Alert } from 'react-native'
 
-export default function CategoryListItem ({ category }) {
+export default function CategoryListItem ({ category, onPress }) {
   return (
-    <View style={styles.container}>
-        <Text style={styles.title}>{category.title}</Text>
-        <Image style={styles.img} source={category.img} />
-    </View>
+    <TouchableOpacity
+      onPress={onPress} 
+      activeOpacity={0.5}
+      style={styles.container}
+    >
+      <Text style={styles.title}>{category.title}</Text>
+      <Image style={styles.img} source={category.img} />
+    </TouchableOpacity>
   )
 } 
 const styles = StyleSheet.create({
