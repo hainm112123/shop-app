@@ -10,7 +10,7 @@ export default function Category({ route }) {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const res = await axios.get(`http://192.168.0.103:3000/products?category=${route.params.id}`);
+      const res = await axios.get(`/products?category=${route.params.id}`);
       setProducts(res.data);
     }
     fetchProducts();

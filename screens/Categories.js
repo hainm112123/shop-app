@@ -15,7 +15,7 @@ export default function Categories({ navigation }) {
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
-    const res = await axios.get('http://192.168.0.103:3000/categories');
+    const res = await axios.get('/categories');
     return res.data;
   }
 
