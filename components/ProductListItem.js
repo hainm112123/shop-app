@@ -1,14 +1,19 @@
+import { useContext } from "react";
 import { View, Image, Text, StyleSheet, ImageBackground, Alert, TouchableOpacity} from "react-native";
 
-export default function ProductListItem({ product, onAddToCartClick }) {
+import { CartContext } from "../contexts/CartContext";
+
+export default function ProductListItem({ product }) {
+  const { addToCart } = useContext(CartContext);
+
   return (
       <View style={styles.cotainer}> 
         <ImageBackground style={styles.img} source={{uri: product.img}} resizeMode="contain"/>
         <View style={styles.info}>
           <Text numberOfLines={1} style={styles.name} >{product.name}</Text>
           <View style={styles.priceRow}> 
-            <Text style={styles.price}>{product.price}</Text>
-            <TouchableOpacity onPress={onAddToCartClick}>
+            <Text style={styles.price}>{product.price}K</Text>
+            <TouchableOpacity onPress={() => addToCart(product)}>
               <Text style={styles.cartText} >BUY +</Text>
             </TouchableOpacity>
           </View>

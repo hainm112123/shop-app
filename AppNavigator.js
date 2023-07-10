@@ -60,16 +60,16 @@ const AppNavigator = () => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
           if (route.name === 'CategoriesStack') {
-            iconName = 'home-outline'
+            iconName = focused ? 'home' : 'home-outline'
           }
           else if (route.name === 'CartStack') {
-            iconName = 'cart-outline'
+            iconName = focused ? 'cart' : 'cart-outline'
           }
           else if (route.name === 'OrdersStack') {
-            iconName = 'receipt-outline'
+            iconName = focused ? 'receipt' : 'receipt-outline'
           }
           else {
-            iconName = 'settings-outline'
+            iconName = focused ? 'settings' : 'settings-outline'
           }
           return <Ionicons name={iconName} size={size} color={color} />
         },
