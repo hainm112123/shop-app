@@ -13,6 +13,7 @@ web-build/
 .idea/
 mock-db/
 .gitignore
+%ProgramData%
 
 # macOS
 .DS_Store

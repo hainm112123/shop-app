@@ -6,7 +6,7 @@ export const CartProvider = ({ children }) => {
   const [cart, updateCart] = useState([]);
 
   const addToCart = (product) => {
-    const index = cart.findIndex((item) => item.product === product);
+    const index = cart.findIndex((item) => JSON.stringify(item.product) === JSON.stringify(product));
     let newCart = JSON.parse(JSON.stringify(cart));
     if (index === -1) {
       newCart.push({product, quantity: 1});
@@ -19,7 +19,7 @@ export const CartProvider = ({ children }) => {
   }
 
   const removeFromCart = (product) => {
-    const index = cart.findIndex((item) => item.product === product);
+    const index = cart.findIndex((item) => JSON.stringify(item.product) === JSON.stringify(product));
     let newCart = JSON.parse(JSON.stringify(cart));
     if (index === -1) return;
     newCart[index].quantity --;

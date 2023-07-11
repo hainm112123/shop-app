@@ -15,8 +15,12 @@ export default function Categories({ navigation }) {
   const [categories, setCategories] = useState([]);
 
   const getCategories = async () => {
-    const res = await axios.get('/categories');
-    return res.data;
+    try {
+      const res = await axios.get('/categories');
+      return res.data;
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   useEffect(() => {
