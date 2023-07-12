@@ -1,19 +1,20 @@
-require('dotenv').config();
+import 'dotenv/config.js'
 
-const express = require('express');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
-const cors = require('cors');
-const mongoose = require('mongoose');
+import express from 'express';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import { connect } from 'mongoose';
 
 const app = express();
 const port = 3000;
 
-const categoriesRoute = require('./routes/categories.route');
-const productsRoute = require('./routes/products.route');
+import categoriesRoute from './routes/categories.route.js';
+import productsRoute from './routes/products.route.js';
+import authRoute from './routes/auth.route.js';
 
 const main = async () => {
-  await mongoose.connect(process.env.MONGO_URL);
+  await connect(process.env.MONGO_URL);
 
   app.use(bodyParser.json()) 
   app.use(bodyParser.urlencoded({ extended: true })) 
@@ -27,6 +28,7 @@ const main = async () => {
 
   app.use('/categories', categoriesRoute);
   app.use('/products', productsRoute);
+  app.use('/auth', authRoute);
 
   app.listen(port, process.env.SERVER_HOST, () => {
     console.log("Server started");

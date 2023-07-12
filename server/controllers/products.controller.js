@@ -1,9 +1,7 @@
-const Product = require('../models/product.model');
+import Product from '../models/product.model.js';
 
-module.exports = {
-  getProducts: async (req, res) => {
-    const options = req.query.category ? {category: req.query.category} : {};
-    const products = await Product.find(options);
-    return res.json(products);
-  }
+export async function getProducts(req, res) {
+  const options = req.query.category ? { category: req.query.category } : {};
+  const products = await Product.find(options);
+  return res.json(products);
 }
