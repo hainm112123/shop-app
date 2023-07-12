@@ -1,19 +1,17 @@
-import { View, Text, StyleSheet } from "react-native";
+import { View, StyleSheet } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import ProductListItem from "../components/ProductListItem";
+import { fetchProducts } from "../redux/categorySlice";
 
 export default function Category({ route }) {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const { products } = useSelector((state) => state.category);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const res = await axios.get(`/products?category=${route.params.id}`);
-      setProducts(res.data);
-    }
-    fetchProducts();
+    dispatch(fetchProducts(route.params._id));
   }, [])
 
   return (

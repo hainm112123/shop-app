@@ -3,20 +3,23 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import axios from 'axios';
 import { SERVER_BASE_URL } from '@env';
+import { Provider } from 'react-redux';
 
 import AppNavigator from './AppNavigator'
 import { CartProvider } from './contexts/CartContext';
+import store from './redux/store';
 
 axios.defaults.baseURL = SERVER_BASE_URL;
-console.log(axios.defaults.baseURL);
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <CartProvider>
-        <AppNavigator />
-      </CartProvider>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <CartProvider>
+          <AppNavigator />
+        </CartProvider>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

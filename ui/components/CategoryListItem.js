@@ -9,7 +9,7 @@ export default function CategoryListItem ({ category, onPress }) {
       style={styles.container}
     >
       <Text style={styles.title}>{category.title}</Text>
-      <Image style={styles.img} source={category.img} />
+      <Image style={styles.img} source={{uri: category.img}} />
     </TouchableOpacity>
   )
 } 

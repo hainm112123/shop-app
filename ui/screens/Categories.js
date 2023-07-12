@@ -1,39 +1,17 @@
-import { Alert, FlatList, ScrollView } from "react-native";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { FlatList } from "react-native";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import CategoryListItem from "../components/CategoryListItem";
-import GamingImg from '../assets/CategoryListItem/console.png'
-import MovieImg from '../assets/CategoryListItem/video.png'
-import CodingImg from '../assets/CategoryListItem/coding.png'
-
-const createData = ({id, title, img}) => {
-  return {id, title, img}
-}
+import { fetchCategories } from "../redux/categoriesSlice";
 
 export default function Categories({ navigation }) {
-  const [categories, setCategories] = useState([]);
-
-  const getCategories = async () => {
-    try {
-      const res = await axios.get('/categories');
-      return res.data;
-    } catch (err) {
-      console.error(err);
-    }
-  }
+  const dispatch = useDispatch();
+  const { categories } = useSelector((state) => state.categories);
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      const items = await getCategories();
-      setCategories([
-        createData({...items[0], img: GamingImg}),
-        createData({...items[1], img: MovieImg}),
-        createData({...items[2], img: CodingImg})
-      ])
-    }
-    fetchCategories();
-  }, [])
+    dispatch(fetchCategories());
+  }, [dispatch])
 
   return (
     <FlatList 
@@ -46,7 +24,7 @@ export default function Categories({ navigation }) {
           /> 
         )
       }}
-      keyExtractor={(item) => `${item.id}`}
+      keyExtractor={(item) => `${item._id}`}
       contentContainerStyle={{
         paddingTop: 16,
         paddingLeft: 16, 

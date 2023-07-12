@@ -1,0 +1,28 @@
+import { createSlice } from "@reduxjs/toolkit"
+import { SERVER_BASE_URL, CATEGORIES_URL } from '@env'
+import axios from "axios";
+
+const initialState = {
+  categories: []
+}
+
+export const categoriesSlice = createSlice({
+  name: "categories",
+  initialState,
+  reducers: {
+    setCategories(state, action) {
+      state.categories = action.payload;
+    }
+  }
+});
+
+export const { setCategories } = categoriesSlice.actions;
+
+export const fetchCategories = () => async (dispatch) => {
+  const url = SERVER_BASE_URL + CATEGORIES_URL;
+  const res = await axios.get(url);
+  dispatch(setCategories(res.data));
+}
+
+export default categoriesSlice.reducer;
+
