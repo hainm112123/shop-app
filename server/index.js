@@ -12,6 +12,8 @@ const port = 3000;
 import categoriesRoute from './routes/categories.route.js';
 import productsRoute from './routes/products.route.js';
 import authRoute from './routes/auth.route.js';
+import cartRoute from './routes/cart.route.js';
+import { requireAuth } from './middlewares/auth.middleware.js';
 
 const main = async () => {
   await connect(process.env.MONGO_URL);
@@ -29,6 +31,7 @@ const main = async () => {
   app.use('/categories', categoriesRoute);
   app.use('/products', productsRoute);
   app.use('/auth', authRoute);
+  app.use('/cart', requireAuth, cartRoute);
 
   app.listen(port, process.env.SERVER_HOST, () => {
     console.log("Server started");

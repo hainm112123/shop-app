@@ -1,4 +1,4 @@
-import { decodeToken } from "../methods/auth.method";
+import { decodeToken } from "../methods/auth.method.js";
 import User from "../models/user.model.js";
 
 const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
@@ -18,5 +18,6 @@ export async function requireAuth(req, res, next) {
   if (!user) {
     return res.status(401).send('User does not exist');
   }
+  res.locals.user = user;
   next();
 }
