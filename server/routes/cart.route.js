@@ -1,8 +1,11 @@
 import { Router } from "express";
-import { getCart } from "../controllers/cart.controller.js";
+import { addToCart, getCart, removeFromCart } from "../controllers/cart.controller.js";
+import { vefiryProduct } from "../middlewares/cart.middleware.js";
 
 const cartRoute = Router();
 
 cartRoute.get('/', getCart);
+cartRoute.post('/add/:product', vefiryProduct, addToCart);
+cartRoute.post('/remove/:product', vefiryProduct, removeFromCart);
 
 export default cartRoute;

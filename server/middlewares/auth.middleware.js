@@ -10,7 +10,7 @@ export async function requireAuth(req, res, next) {
   }
   const decoded = await decodeToken(accessToken, accessTokenSecret);
   if (!decoded) {
-    return res.status(401).send('Invailid access token');
+    return res.status(401).send('Invalid access token');
   }
   
   const username = decoded.payload.username;

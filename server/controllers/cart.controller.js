@@ -14,3 +14,33 @@ export async function getCart(req, res) {
   }));
   return res.json(cart);
 }
+
+export async function addToCart(req, res) {
+  let { user } = res.locals;
+  const { product } = req.params;
+  const index = user.cart.findIndex((item) => item.product === product);
+  if (index === -1) {
+    user.cart.push({
+      product,
+      quantity: 1
+    });
+  }
+  else {
+    user.cart[index].quantity++;
+  }
+  user = await user.save();
+  return res.json(user);
+}
+
+export async function removeFromCart(req, res) {
+  let { user } = res.locals;
+  const { product } = req.params;
+  const index = user.cart.findIndex((item) => item.product === product);
+  if (index === -1) {
+    return res.status(401).send('Invalid product removal');
+  }
+  user.cart[index].quantity--;
+  if (user.cart[index].quantity === 0) user.cart.splice(index, 1);
+  user = await user.save();
+  return res.json(user);
+}
