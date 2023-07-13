@@ -1,13 +1,29 @@
-import { useContext } from "react";
 import {  FlatList, StyleSheet, Text, View } from "react-native";
-import { CartContext } from "../contexts/CartContext";
 import CartItem from "../components/CartItem";
 import { TouchableOpacity } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchCart, setCart } from "../redux/cartSlice";
+import { getAccessToken } from "../redux/authSlice";
+import { toggleModal } from "../redux/appStateSlice";
 
 export default function Cart() {
-  const { cart } = useContext(CartContext);
-  // console.log(cart);
+  const dispatch = useDispatch();
+
+  const { cart } = useSelector((state) => state.cart);
   const totalPrice = cart.reduce((price, item) => price + item.product.price * item.quantity, 0);
+  const data = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    const accessToken = dispatch(getAccessToken(data)) ;
+    if (accessToken) {
+      dispatch(fetchCart(accessToken));
+    }
+    else {
+      dispatch(toggleModal(true));
+      dispatch(setCart([]));
+    }
+  }, [dispatch, data]);
 
   return (
     <View style={styles.container}>

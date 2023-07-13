@@ -4,7 +4,7 @@ import User from "../models/user.model.js";
 const accessTokenSecret = process.env.ACCESS_TOKEN_SECRET;
 
 export async function requireAuth(req, res, next) {
-  const accessToken = req.headers.authorization;
+  const accessToken = req.headers.authorization && req.headers.authorization.split(' ')[1];
   if (!accessToken) {
     return res.status(401).send("Access token not found");
   }

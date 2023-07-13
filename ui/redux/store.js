@@ -16,11 +16,12 @@ import categoriesReducer from "./categoriesSlice";
 import categoryReducer from "./categorySlice";
 import authReducer from './authSlice';
 import appStateReducer from './appStateSlice';
+import cartReducer from './cartSlice';
 
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: ['auth']
+  whitelist: ['auth'],
 }
 
 const reducer = combineReducers({
@@ -28,11 +29,12 @@ const reducer = combineReducers({
   category: categoryReducer,
   appState: appStateReducer,
   auth: authReducer,
+  cart: cartReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 const store = configureStore({
-  // reducer,
+  reducer,
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -9,7 +9,8 @@ import { getAccessToken, logout } from "../redux/authSlice";
 export default function Settings() {
   const dispatch = useDispatch();
 
-  const accessToken = getAccessToken((useSelector((state) => state.auth)));
+  const data = useSelector((state) => state.auth);
+  const accessToken = dispatch(getAccessToken(data));
   const { userInfo } = useSelector((state) => state.auth);
 
   const openModal = () => {
