@@ -15,6 +15,7 @@ mock-db/
 .gitignore
 %ProgramData%
 data/
+ReactotronConfig.js
 
 # macOS
 .DS_Store

@@ -11,6 +11,7 @@
     "mock-server": "json-server --host 192.168.0.103 ./mock-db/db.json"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.17.11",
     "@react-native-masked-view/masked-view": "0.2.8",
     "@react-navigation/bottom-tabs": "^6.5.8",
     "@react-navigation/native": "^6.1.7",
@@ -25,14 +26,17 @@
     "react-native": "0.71.8",
     "react-native-dotenv": "^3.4.9",
     "react-native-gesture-handler": "~2.9.0",
+    "react-native-modal": "^13.0.1",
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.1.1",
-    "redux": "^4.2.1"
+    "redux": "^4.2.1",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "json-server": "^0.17.3",
-    "react-devtools": "^4.27.8"
+    "react-devtools": "^4.27.8",
+    "reactotron-react-native": "^5.0.3"
   },
   "private": true
 }

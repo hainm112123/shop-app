@@ -20,8 +20,12 @@ export const { setCategories } = categoriesSlice.actions;
 
 export const fetchCategories = () => async (dispatch) => {
   const url = SERVER_BASE_URL + CATEGORIES_URL;
-  const res = await axios.get(url);
-  dispatch(setCategories(res.data));
+  try {
+    const res = await axios.get(url);  
+    dispatch(setCategories(res.data));
+  } catch(err) {
+    console.error(err);
+  }
 }
 
 export default categoriesSlice.reducer;
