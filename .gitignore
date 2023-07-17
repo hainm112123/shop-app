@@ -16,6 +16,7 @@ mock-db/
 %ProgramData%
 data/
 ReactotronConfig.js
+security/
 
 # macOS
 .DS_Store

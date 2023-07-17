@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { toggleModal } from "../redux/appStateSlice";
 import colorConfig from "../configs/colorConfig";
-import { useEffect } from "react";
 import { getAccessToken, logout } from "../redux/authSlice";
+import LoginButton from "../components/LoginButton";
 
 export default function Settings() {
   const dispatch = useDispatch();
@@ -36,9 +36,7 @@ export default function Settings() {
           </View>
       } 
       {  
-        !accessToken && <TouchableOpacity style={styles.button} activeOpacity={0.8} onPress={openModal}>
-          <Text style={styles.btnText}>Login</Text>
-        </TouchableOpacity>
+        !accessToken && <LoginButton />
       }
     </View>
   )

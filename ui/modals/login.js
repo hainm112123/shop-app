@@ -15,8 +15,8 @@ export default function Login() {
   const dispatch = useDispatch();
   const { loginModalVisible } = useSelector((state) => (state.appState));
 
-  const onSubmit = () => {
-    if (dispatch(login(username, password))) {
+  const onSubmit = async () => {
+    if (await dispatch(login(username, password))) {
       dispatch(toggleModal(false));
       onChangePassword("")
     }
@@ -31,7 +31,7 @@ export default function Login() {
       animationType='slide'
       visible={loginModalVisible}
       onRequestClose={() => {
-        toggleModal(!loginModalVisible);
+        dispatch(toggleModal(!loginModalVisible));
       }}
       statusBarTranslucent
     >

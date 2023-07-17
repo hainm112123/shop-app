@@ -21,8 +21,8 @@ export const { setProducts } = categorySlice.actions;
 export const fetchProducts = (category) => async (dispatch) => {
   const url = SERVER_BASE_URL + PRODUCTS_URL + '?category=' + category;
   try {
-    const res = await axios.get(url);
-    dispatch(setProducts(res.data));  
+    const res = await fetch(url);
+    dispatch(setProducts(await res.json()));  
   } catch(err) {
     console.error(err);
   }

@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { fetchCart, setCart } from "../redux/cartSlice";
 import { getAccessToken } from "../redux/authSlice";
 import { toggleModal } from "../redux/appStateSlice";
+import LoginButton from "../components/LoginButton";
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -13,9 +14,9 @@ export default function Cart() {
   const { cart } = useSelector((state) => state.cart);
   const totalPrice = cart.reduce((price, item) => price + item.product.price * item.quantity, 0);
   const data = useSelector((state) => state.auth);
+  const accessToken = dispatch(getAccessToken(data)) ;
 
   useEffect(() => {
-    const accessToken = dispatch(getAccessToken(data)) ;
     if (accessToken) {
       dispatch(fetchCart(accessToken));
     }
@@ -23,7 +24,13 @@ export default function Cart() {
       dispatch(toggleModal(true));
       dispatch(setCart([]));
     }
-  }, [dispatch, data]);
+  }, [dispatch, accessToken]);
+
+  if (!accessToken) {
+    return (<View style={styles.container}>
+      <LoginButton />
+    </View>);
+  }
 
   return (
     <View style={styles.container}>

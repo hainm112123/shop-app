@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { LOGIN_URL, ACCESS_TOKEN_LIFE } from '@env'
+import { LOGIN_URL, ACCESS_TOKEN_LIFE, SERVER_BASE_URL } from '@env'
 import axios from 'axios'
 import { Alert } from "react-native"
 
@@ -30,18 +30,35 @@ export const { loginSuccess, logout } = authSlice.actions;
 
 export const login = (username, password) => async (dispatch) => {
   const accessTokenLife = ACCESS_TOKEN_LIFE * 60 * 60 * 1000;
+  const url = SERVER_BASE_URL + LOGIN_URL;
   try {
-    const res = await axios.post(LOGIN_URL, {
-      username, 
-      password
+    const res = await fetch(url, {
+      method: "POST",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username, 
+        password
+      })
     });
-    dispatch(loginSuccess({
-      accessToken: res.data.accessToken,
-      expireDate: JSON.stringify(new Date(Date.now() + accessTokenLife)),
-      userInfo: username,
-    }));
+    
+    if (res.ok) {
+      const json = await res.json();
+      dispatch(loginSuccess({
+        accessToken: json.accessToken,
+        expireDate: JSON.stringify(new Date(Date.now() + accessTokenLife)),
+        userInfo: username,
+      }));
+    }
+    else {
+      Alert.alert(await res.text());
+      return false;
+    }
   } catch(err) {
-    Alert.alert(err.response.data);
+    // Alert.alert(err.response.data);
+    // console.log(err);
     return false;
   }
 
