@@ -1,12 +1,17 @@
 import { useContext } from "react";
-import { Button, ImageBackground, StyleSheet, Text, View } from "react-native";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { CartContext } from "../contexts/CartContext";
+import { addToCart, removeFromCart } from "../redux/cartSlice";
+import { getAccessToken } from "../redux/authSlice";
 
 export default function CartItem({ item }) {
   const { product, quantity } = item;
-  const { addToCart, removeFromCart } = useContext(CartContext);
+
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.auth);
+  const accessToken = dispatch(getAccessToken(data));
 
   return (
     <View style={styles.container}>
@@ -16,9 +21,9 @@ export default function CartItem({ item }) {
         <Text style={styles.price}>{product.price}K</Text>
       </View>
       <View style={styles.changeQuantity}>
-        <Ionicons name="remove-circle-outline" size={24} onPress={() => removeFromCart(product)}/>
+        <Ionicons name="remove-circle-outline" size={24} onPress={() => dispatch(removeFromCart(accessToken, product))}/>
         <Text style={styles.quantity}>{quantity}</Text>
-        <Ionicons name="add-circle-outline" size={24} onPress={() => addToCart(product)} />
+        <Ionicons name="add-circle-outline" size={24} onPress={() => dispatch(addToCart(accessToken, product))} />
       </View>
     </View>
   )

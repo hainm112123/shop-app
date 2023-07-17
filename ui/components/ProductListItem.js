@@ -1,10 +1,23 @@
 import { useContext } from "react";
 import { View, Image, Text, StyleSheet, ImageBackground, Alert, TouchableOpacity} from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 
-import { CartContext } from "../contexts/CartContext";
+import { addToCart } from "../redux/cartSlice";
+import { getAccessToken } from "../redux/authSlice";
+import { toggleModal } from '../redux/appStateSlice'
 
 export default function ProductListItem({ product }) {
-  const { addToCart } = useContext(CartContext);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.auth);
+  const accessToken = dispatch(getAccessToken(data));
+
+  const requiredAuth = () => {
+    if (!accessToken) {
+      dispatch(toggleModal(true));
+      return false;
+    }
+    return true;
+  }
 
   return (
       <View style={styles.cotainer}> 
@@ -13,8 +26,13 @@ export default function ProductListItem({ product }) {
           <Text numberOfLines={1} style={styles.name} >{product.name}</Text>
           <View style={styles.priceRow}> 
             <Text style={styles.price}>{product.price}K</Text>
-            <TouchableOpacity onPress={() => addToCart(product)}>
-              <Text style={styles.cartText} >BUY +</Text>
+            <TouchableOpacity onPress={() => {
+              if (requiredAuth()) {
+                dispatch(addToCart(accessToken, product));
+                Alert.alert('Product added')
+              }
+            }} >
+                <Text style={styles.cartText} >BUY +</Text>
             </TouchableOpacity>
           </View>
         </View>
