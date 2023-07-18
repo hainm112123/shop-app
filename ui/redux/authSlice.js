@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { LOGIN_URL, ACCESS_TOKEN_LIFE, SERVER_BASE_URL } from '@env'
-import axios from 'axios'
 import { Alert } from "react-native"
 
 const initialState = {

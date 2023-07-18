@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
 import { SERVER_BASE_URL, CATEGORIES_URL } from '@env'
-import axios from "axios";
 
 const initialState = {
   categories: []

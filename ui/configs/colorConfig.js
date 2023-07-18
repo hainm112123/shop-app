@@ -5,4 +5,5 @@ export default colorConfig = {
   inputText: "#fff",
   placeholderInputText: "rgba(256, 256, 256, 0.5)",
   modalBtnBg: "rgba(192, 149, 149, 1)",
+  primary: "#ee4c2c"
 }

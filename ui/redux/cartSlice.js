@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
-import axios from "axios";
-import { CART_URL, ADD_TO_CART_URL, REMOVE_FROM_CART_URL, SERVER_BASE_URL } from "@env"
+import { CART_URL, ADD_TO_CART_URL, REMOVE_FROM_CART_URL, SERVER_BASE_URL, PURCHASE_URL } from "@env"
 import { Alert } from "react-native";
+import { fetchOrders } from "./ordersSlice";
 
 const initialState = {
   cart: []
@@ -38,7 +38,6 @@ export const fetchCart = (accessToken) => async (dispatch) => {
 
     return true;
   } catch(err) {
-    Alert.alert(err.response.data);
     return false;
   }
 }
@@ -66,6 +65,22 @@ export const addToCart = (accessToken, product) => async (dispatch) => {
 
 export const removeFromCart = (accessToken, product) => async (dispatch) => {
   dispatch(modifyCart(REMOVE, accessToken, product));
+}
+
+export const purchase = (accessToken) => async (dispatch) => {
+  const url = SERVER_BASE_URL + PURCHASE_URL;
+  const res = await fetch(url, {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${accessToken}`
+    }
+  });
+  console.log(await res.text());
+  if (res.ok) {
+    dispatch(fetchCart(accessToken));
+    dispatch(fetchOrders(accessToken));
+    return true;
+  }
 }
 
 export default cartSlice.reducer;

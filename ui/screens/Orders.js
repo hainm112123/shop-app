@@ -4,8 +4,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 
 import { getAccessToken } from "../redux/authSlice";
 import LoginButton from "../components/LoginButton";
-import ToShipOrders from "./ToShipOrders";
-import CompleteOrders from "./CompleteOrders";
+import OrdersTab from "./OrdersTab";
 
 export default function Orders() {
   const dispatch = useDispatch();
@@ -24,8 +23,8 @@ export default function Orders() {
 
   return (
     <Tab.Navigator>
-      <Tab.Screen name="To Ship" component={ToShipOrders} />
-      <Tab.Screen name="Complete" component={CompleteOrders} />
+      <Tab.Screen name="To Ship" component={OrdersTab} initialParams={{type: 'toship'}} />
+      <Tab.Screen name="Complete" component={OrdersTab} initialParams={{type: 'complete'}} />
     </Tab.Navigator>
   )
 }

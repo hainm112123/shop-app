@@ -17,6 +17,7 @@ import categoryReducer from "./categorySlice";
 import authReducer from './authSlice';
 import appStateReducer from './appStateSlice';
 import cartReducer from './cartSlice';
+import ordersReducer from './ordersSlice';
 
 const persistConfig = {
   key: 'root',
@@ -30,11 +31,12 @@ const reducer = combineReducers({
   appState: appStateReducer,
   auth: authReducer,
   cart: cartReducer,
+  orders: ordersReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 const store = configureStore({
-  reducer,
+  // reducer,
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

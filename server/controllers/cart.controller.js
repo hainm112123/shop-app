@@ -10,6 +10,7 @@ export async function getCart(req, res) {
     return {
       product,
       quantity: item.quantity,
+      _id: item._id.toString(),
     }
   }));
   return res.json(cart);
@@ -47,7 +48,7 @@ export async function removeFromCart(req, res) {
 
 export async function purchase(req, res) {
   let { user } = res.locals;
-  const orders = user.cart.map((item) => ({ ...item, state: 'toship' }))
+  const orders = user.cart.map((item) => ({ ...item, state: 'toship' }));
   user.orders = user.orders.concat(orders);
   user.cart = [];
   user = await user.save();

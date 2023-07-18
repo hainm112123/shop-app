@@ -1,9 +1,9 @@
 import {  FlatList, StyleSheet, Text, View } from "react-native";
-import CartItem from "../components/CartItem";
 import { TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchCart, setCart } from "../redux/cartSlice";
+import CartItem from "../components/CartItem";
+import { fetchCart, purchase, setCart } from "../redux/cartSlice";
 import { getAccessToken } from "../redux/authSlice";
 import LoginButton from "../components/LoginButton";
 
@@ -37,7 +37,7 @@ export default function Cart() {
       <FlatList 
         data={cart}
         renderItem={({ item }) => <CartItem item={item} />}
-        keyExtractor={(item) => `${item.product._id}`}
+        keyExtractor={(item) => `${item._id}`}
         style={styles.itemList}
       />
 
@@ -46,7 +46,7 @@ export default function Cart() {
           <Text style={styles.totalPriceText}>Total price</Text>
           <Text style={styles.totalPriceValue}>{totalPrice}K</Text>
         </View>
-        <TouchableOpacity style={styles.purchaseBtn} activeOpacity={0.8}>
+        <TouchableOpacity style={styles.purchaseBtn} activeOpacity={0.8} onPress={() => dispatch(purchase(accessToken))}>
           <Text style={styles.purchaseBtnText}>Purchase</Text>
         </TouchableOpacity>
       </View>

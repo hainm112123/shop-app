@@ -1,7 +1,7 @@
 import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-
 import Ionicons from 'react-native-vector-icons/Ionicons'
+
 import { addToCart, removeFromCart } from "../redux/cartSlice";
 import { getAccessToken } from "../redux/authSlice";
 
