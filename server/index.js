@@ -16,6 +16,7 @@ import productsRoute from './routes/products.route.js';
 import authRoute from './routes/auth.route.js';
 import cartRoute from './routes/cart.route.js';
 import { requireAuth } from './middlewares/auth.middleware.js';
+import ordersRoute from './routes/orders.route.js';
 
 const main = async () => {
   await connect(process.env.MONGO_URL);
@@ -34,6 +35,7 @@ const main = async () => {
   app.use('/products', productsRoute);
   app.use('/auth', authRoute);
   app.use('/cart', requireAuth, cartRoute);
+  app.use('/orders', requireAuth, ordersRoute);
 
   // const httpsOptions = {
   //   key: fs.readFileSync('./security/cert.key'),

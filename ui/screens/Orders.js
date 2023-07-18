@@ -1,7 +1,11 @@
 import { StyleSheet, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+
 import { getAccessToken } from "../redux/authSlice";
 import LoginButton from "../components/LoginButton";
+import ToShipOrders from "./ToShipOrders";
+import CompleteOrders from "./CompleteOrders";
 
 export default function Orders() {
   const dispatch = useDispatch();
@@ -16,8 +20,13 @@ export default function Orders() {
     )
   }
 
+  const Tab = createMaterialTopTabNavigator();
+
   return (
-    <Text>Orders</Text>
+    <Tab.Navigator>
+      <Tab.Screen name="To Ship" component={ToShipOrders} />
+      <Tab.Screen name="Complete" component={CompleteOrders} />
+    </Tab.Navigator>
   )
 }
 

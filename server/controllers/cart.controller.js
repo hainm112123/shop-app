@@ -29,7 +29,7 @@ export async function addToCart(req, res) {
     user.cart[index].quantity++;
   }
   user = await user.save();
-  return res.json(user);
+  return res.json(user.cart);
 }
 
 export async function removeFromCart(req, res) {
@@ -42,5 +42,14 @@ export async function removeFromCart(req, res) {
   user.cart[index].quantity--;
   if (user.cart[index].quantity === 0) user.cart.splice(index, 1);
   user = await user.save();
-  return res.json(user);
+  return res.json(user.cart);
+}
+
+export async function purchase(req, res) {
+  let { user } = res.locals;
+  const orders = user.cart.map((item) => ({ ...item, state: 'toship' }))
+  user.orders = user.orders.concat(orders);
+  user.cart = [];
+  user = await user.save();
+  return res.json(user.orders);
 }

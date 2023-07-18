@@ -5,9 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchCart, setCart } from "../redux/cartSlice";
 import { getAccessToken } from "../redux/authSlice";
-import { toggleModal } from "../redux/appStateSlice";
 import LoginButton from "../components/LoginButton";
-import AuthRequired from "../components/authRequired";
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -22,7 +20,6 @@ export default function Cart() {
       dispatch(fetchCart(accessToken));
     }
     else {
-      // dispatch(toggleModal(true));
       dispatch(setCart([]));
     }
   }, [dispatch, accessToken]);
@@ -30,7 +27,6 @@ export default function Cart() {
   if (!accessToken) {
     return (
       <View style={styles.container}>
-        <AuthRequired />
         <LoginButton />
       </View>
     );
@@ -38,7 +34,6 @@ export default function Cart() {
 
   return (
     <View style={styles.container}>
-      <AuthRequired />
       <FlatList 
         data={cart}
         renderItem={({ item }) => <CartItem item={item} />}

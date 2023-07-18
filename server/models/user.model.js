@@ -8,6 +8,11 @@ const userSchema = new Schema({
   cart: [{
     product: String,
     quantity: Number
+  }],
+  orders: [{
+    product: String,
+    quantity: Number,
+    state: String,
   }]
 });
 

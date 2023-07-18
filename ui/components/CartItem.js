@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import { ImageBackground, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 
 import Ionicons from 'react-native-vector-icons/Ionicons'
