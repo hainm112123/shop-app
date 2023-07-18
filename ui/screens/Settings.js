@@ -50,6 +50,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginLeft: 16,
     marginTop: 16,
+    color: colorConfig.cardText,
   },
   button: {
     alignItems: "center",

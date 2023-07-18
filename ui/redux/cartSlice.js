@@ -75,7 +75,6 @@ export const purchase = (accessToken) => async (dispatch) => {
       "Authorization": `Bearer ${accessToken}`
     }
   });
-  console.log(await res.text());
   if (res.ok) {
     dispatch(fetchCart(accessToken));
     dispatch(fetchOrders(accessToken));

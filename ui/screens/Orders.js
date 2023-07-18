@@ -5,6 +5,7 @@ import { createMaterialTopTabNavigator } from "@react-navigation/material-top-ta
 import { getAccessToken } from "../redux/authSlice";
 import LoginButton from "../components/LoginButton";
 import OrdersTab from "./OrdersTab";
+import colorConfig from "../configs/colorConfig";
 
 export default function Orders() {
   const dispatch = useDispatch();
@@ -22,7 +23,13 @@ export default function Orders() {
   const Tab = createMaterialTopTabNavigator();
 
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarLabelStyle: {
+          color: colorConfig.tabIcon,
+        },
+      }}
+    >
       <Tab.Screen name="To Ship" component={OrdersTab} initialParams={{type: 'toship'}} />
       <Tab.Screen name="Complete" component={OrdersTab} initialParams={{type: 'complete'}} />
     </Tab.Navigator>

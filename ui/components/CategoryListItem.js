@@ -1,5 +1,6 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity, Alert } from 'react-native'
+import colorConfig from "../configs/colorConfig";
 
 export default function CategoryListItem ({ category, onPress }) {
   return (
@@ -18,7 +19,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 16,
     borderRadius: 4,
-    backgroundColor: "#fff",
+    backgroundColor: colorConfig.cardBg,
     shadowColor: "#000",
     shadowOpacity: 0.3,
     shadowRadius: 10,
@@ -29,10 +30,12 @@ const styles = StyleSheet.create({
   img: {
     width: 64,
     height: 64,
+    tintColor: colorConfig.cardText,
   },
   title: {
     textTransform: 'uppercase',
     marginBottom: 8,
-    fontWeight: '700'
+    fontWeight: '700',
+    color: colorConfig.categoriesItemText,
   }
 })

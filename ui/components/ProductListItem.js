@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../redux/cartSlice";
 import { getAccessToken } from "../redux/authSlice";
 import { toggleModal } from '../redux/appStateSlice'
+import colorConfig from "../configs/colorConfig";
 
 export default function ProductListItem({ product }) {
   const dispatch = useDispatch();
@@ -44,13 +45,13 @@ const styles = StyleSheet.create({
   cartText: {
     textTransform: "uppercase",
     fontSize: 16,
-    color: "#2f95dc",
+    color: colorConfig.purchaseText,
   },
   cotainer: {
     marginBottom: 20,
     paddingTop: 4,
     borderRadius: 4,
-    backgroundColor: "#fff",
+    backgroundColor: colorConfig.cardBg,
     overflow: "hidden",
     shadowColor: "#000",
     shadowOpacity: 0.1,
@@ -69,6 +70,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
     marginBottom: 8,
+    color: colorConfig.cardText,
   },
   priceRow: {
     flexDirection: "row",
@@ -76,7 +78,7 @@ const styles = StyleSheet.create({
   },
   price: {
     fontSize: 16,
-    color: "#888",
+    color: colorConfig.cardSubText,
     flex: 1,
   }
 })

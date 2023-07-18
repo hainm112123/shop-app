@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingVertical: 4,
     borderRadius: 4,
-    backgroundColor: "#fff",
+    backgroundColor: colorConfig.cardBg,
     overflow: "hidden",
     shadowColor: "#000",
     shadowOpacity: 0.1,
@@ -57,16 +57,16 @@ const styles = StyleSheet.create({
     paddingRight: 20,
     paddingBottom: 4,
     paddingTop: 12,
-    borderTopColor: "#ccc",
+    borderTopColor: colorConfig.buttonBoder,
     borderTopWidth: 1,
     marginTop: 12,
-    backgroundColor: "#fffefb",
+    backgroundColor: colorConfig.payBg,
   },
   receivedBtn: {
     marginLeft: 20,
     paddingHorizontal: 6,
     paddingVertical: 4,
-    backgroundColor: colorConfig.primary,
+    backgroundColor: colorConfig.purchaseBg,
     borderRadius: 4
   },
   cancelBtn: {
@@ -74,11 +74,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 6,
     paddingVertical: 4,
     borderRadius: 4,
-    borderColor: "#e9e9e8",
+    borderColor: colorConfig.buttonBoder,
     borderWidth: 1,
   },
   buttonText: {
-    fontSize: 16
+    fontSize: 16,
+    color: colorConfig.purchaseText,
   },
   itemContainer: {
     flexDirection: "row",
@@ -95,6 +96,7 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
     marginBottom: 8,
+    color: colorConfig.cardText,
   },
   priceContainer: {
     flex: 1,
@@ -103,10 +105,10 @@ const styles = StyleSheet.create({
   },  
   price: {
     fontSize: 16,
-    color: "#888",
+    color: colorConfig.cardSubText,
   },
   quantity: {
     fontSize: 16,
-    color: "#888",
+    color: colorConfig.cardSubText,
   },
 })

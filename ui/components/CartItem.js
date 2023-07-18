@@ -4,6 +4,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import { addToCart, removeFromCart } from "../redux/cartSlice";
 import { getAccessToken } from "../redux/authSlice";
+import colorConfig from "../configs/colorConfig";
 
 export default function CartItem({ item }) {
   const { product, quantity } = item;
@@ -20,9 +21,9 @@ export default function CartItem({ item }) {
         <Text style={styles.price}>{product.price}K</Text>
       </View>
       <View style={styles.changeQuantity}>
-        <Ionicons name="remove-circle-outline" size={24} onPress={() => dispatch(removeFromCart(accessToken, product))}/>
+        <Ionicons name="remove-circle-outline" size={24} color={colorConfig.removeText} onPress={() => dispatch(removeFromCart(accessToken, product))}/>
         <Text style={styles.quantity}>{quantity}</Text>
-        <Ionicons name="add-circle-outline" size={24} onPress={() => dispatch(addToCart(accessToken, product))} />
+        <Ionicons name="add-circle-outline" size={24} color={colorConfig.purchaseText} onPress={() => dispatch(addToCart(accessToken, product))} />
       </View>
     </View>
   )
@@ -33,7 +34,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     paddingVertical: 4,
     borderRadius: 4,
-    backgroundColor: "#fff",
+    backgroundColor: colorConfig.cartItemBg,
     overflow: "hidden",
     shadowColor: "#000",
     shadowOpacity: 0.1,
@@ -54,10 +55,11 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 16,
     marginBottom: 8,
+    color: colorConfig.cartItemText
   },
   price: {
     fontSize: 16,
-    color: "#888",
+    color: colorConfig.cardSubText,
     flex: 1,
   },
   changeQuantity:{
@@ -68,5 +70,6 @@ const styles = StyleSheet.create({
   quantity: {
     fontSize: 24,
     paddingHorizontal: 8,
+    color: colorConfig.cardText
   },
 })

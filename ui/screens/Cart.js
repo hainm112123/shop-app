@@ -6,6 +6,7 @@ import CartItem from "../components/CartItem";
 import { fetchCart, purchase, setCart } from "../redux/cartSlice";
 import { getAccessToken } from "../redux/authSlice";
 import LoginButton from "../components/LoginButton";
+import colorConfig from "../configs/colorConfig";
 
 export default function Cart() {
   const dispatch = useDispatch();
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
   payContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    backgroundColor: "#fff",
+    backgroundColor: colorConfig.payBg,
     padding: 16,
   },
   totalPrice: {
@@ -73,21 +74,22 @@ const styles = StyleSheet.create({
   },
   totalPriceText: {
     fontSize: 16,
-    color: "#888",
+    color: colorConfig.cardSubText,
   },
   totalPriceValue: {
     fontSize: 24,
+    color: colorConfig.payPrice,
   },
   purchaseBtn: {
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#0081f1",
+    backgroundColor: colorConfig.purchaseBg,
     paddingVertical: 12,
     paddingHorizontal: 32,
     elevation: 4,
   },
   purchaseBtnText: {
-    color: "#fff",
+    color: colorConfig.purchaseText,
     textTransform: "uppercase",
     fontSize: 16,
   }
