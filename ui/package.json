@@ -28,12 +28,15 @@
     "react-native-dotenv": "^3.4.9",
     "react-native-gesture-handler": "~2.9.0",
     "react-native-modal": "^13.0.1",
-    "react-native-pager-view": "^6.2.0",
+    "react-native-pager-view": "6.1.2",
     "react-native-tab-view": "^3.5.2",
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.1.1",
     "redux": "^4.2.1",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "react-native-web": "~0.18.10",
+    "react-dom": "18.2.0",
+    "@expo/webpack-config": "^18.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

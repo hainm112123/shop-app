@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { CART_URL, ADD_TO_CART_URL, REMOVE_FROM_CART_URL, SERVER_BASE_URL, PURCHASE_URL } from "@env"
+// import { CART_URL, ADD_TO_CART_URL, REMOVE_FROM_CART_URL, SERVER_BASE_URL, PURCHASE_URL } from "@env"
+import { CART_URL, ADD_TO_CART_URL, REMOVE_FROM_CART_URL, SERVER_BASE_URL, PURCHASE_URL } from "./url"
 import { Alert } from "react-native";
 import { fetchOrders } from "./ordersSlice";
 

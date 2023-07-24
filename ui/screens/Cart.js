@@ -23,7 +23,7 @@ export default function Cart() {
     else {
       dispatch(setCart([]));
     }
-  }, [dispatch, accessToken]);
+  }, [dispatch, accessToken, fetchCart, setCart]);
 
   if (!accessToken) {
     return (

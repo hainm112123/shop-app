@@ -23,6 +23,7 @@ const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
   whitelist: ['auth'],
+  blacklist: ['cart', 'categories', 'category', 'orders', 'appState']
 }
 
 const reducer = combineReducers({

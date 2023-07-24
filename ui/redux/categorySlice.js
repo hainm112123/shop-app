@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { SERVER_BASE_URL, PRODUCTS_URL } from '@env'
+// import { SERVER_BASE_URL, PRODUCTS_URL } from '@env'
+import { SERVER_BASE_URL, PRODUCTS_URL } from './url'
 
 const initialState = {
   products: []

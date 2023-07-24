@@ -22,9 +22,9 @@ axios.defaults.baseURL = SERVER_BASE_URL;
 
 export default function App() {
   const navTheme = {
-    ...DarkTheme,
+    ...DefaultTheme,
     colors: {
-      ...DarkTheme.colors,
+      ...DefaultTheme.colors,
       background: colorConfig.mainBg,
       card: colorConfig.headerBg,
       primary: colorConfig.mainBg,

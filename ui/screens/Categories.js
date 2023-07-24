@@ -11,7 +11,7 @@ export default function Categories({ navigation }) {
 
   useEffect(() => {
     dispatch(fetchCategories());
-  }, [dispatch])
+  }, [dispatch, fetchCategories])
 
   return (
     <FlatList 

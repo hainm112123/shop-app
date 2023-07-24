@@ -21,7 +21,7 @@ export default function OrdersTab({ route }) {
     else {
       dispatch(setOrders([]));
     }
-  }, [dispatch, accessToken])
+  }, [dispatch, accessToken, fetchOrders, setOrders])
   
   return (
     <View style={styles.container}>

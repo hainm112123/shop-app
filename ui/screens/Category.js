@@ -12,7 +12,7 @@ export default function Category({ route }) {
 
   useEffect(() => {
     dispatch(fetchProducts(route.params._id));
-  }, [])
+  }, [dispatch, fetchProducts])
 
   return (
     <FlatList 

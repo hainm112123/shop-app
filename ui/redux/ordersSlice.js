@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { GET_ORDERS_URL, CANCEL_ORDER_URL, RECEIVED_ORDER_URL, SERVER_BASE_URL } from '@env'
+import { GET_ORDERS_URL, CANCEL_ORDER_URL, RECEIVED_ORDER_URL, SERVER_BASE_URL } from './url'
 
 const initialState = {
   orders: [],
